@@ -1,0 +1,21 @@
+-- Create a new database
+CREATE DATABASE ToDoApp;
+
+-- Switch to the ToDoApp database
+USE ToDoApp;
+
+-- Create the ToDoItems table
+CREATE TABLE ToDoItems (
+    Id INT PRIMARY KEY IDENTITY(1,1), -- Auto-increment primary key
+    Title NVARCHAR(255) NOT NULL, -- Title of the to-do item
+    Description NVARCHAR(500), -- Description of the to-do item
+    IsCompleted BIT NOT NULL DEFAULT 0, -- Flag to check if the item is completed
+    CreatedAt DATETIME NOT NULL DEFAULT GETDATE(), -- When the item was created
+    UpdatedAt DATETIME NOT NULL DEFAULT GETDATE() -- When the item was last updated
+);
+
+-- Insert some sample data
+INSERT INTO ToDoItems (Title, Description, IsCompleted) 
+VALUES 
+('Learn ASP.NET Core', 'Study ASP.NET Core MVC and Entity Framework Core', 0),
+('Build a Web Application', 'Create a full-stack web app using .NET Core and SQL Server', 0);
